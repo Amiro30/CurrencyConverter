@@ -35,7 +35,9 @@ namespace ConverterNew
 
         public MinfinParser(string url)
         {
-            
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             client.Encoding = Encoding.UTF8;
             client.Headers.Add("user-agent", "Only a test!");
 
@@ -48,14 +50,14 @@ namespace ConverterNew
 
             foreach (Match m in buyCourses)
             {
+                //write to List all digits, that match
                 buyCollection.Add(float.Parse(m.Groups[1].ToString().Replace(".", ",")));
-                    //write to List all digits, that match
             }
 
             foreach (Match m in saleCourses)
             {
+                //write to List all digits, that match
                 saleCollection.Add(float.Parse(m.Groups[1].ToString().Replace(".", ",")));
-                    //write to List all digits, that match
             }
             FillCurrencyTable();
         }

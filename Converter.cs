@@ -14,16 +14,15 @@ namespace ConverterNew
         private  MinfinParser minfinParser = new MinfinParser("http://minfin.com.ua/currency/banks/");
         private IuaParser iuaParser = new IuaParser("http://finance.i.ua/bank/4/");
 
-
         public float [,] GetMatrix (int selectBank)
         {
             if (selectBank == 1)
             {
-                return minfinParser.CurrencyTable;
+                return iuaParser.CurrencyTable;
             }
             else
             {
-                return iuaParser.CurrencyTable;
+                return minfinParser.CurrencyTable;
             }
         }
        
